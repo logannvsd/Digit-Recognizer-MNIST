@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head><title>Predicting Numbers in Images </title>
+</head>
+
+<body align="center" >
+<h1> MNIST </h1>
+<h2> Upload Image below </h2>
+
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for msg in messages %}
+			<h2>{{msg}}</h2>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+
+<form action="/predict" method="POST" enctype=multipart/form-data>
+      <input type=file name=file>
+      <input type=submit value=upload>
+</form>
+
+<h2> Uploaded image </h2>
+<img src="{{url_for("static", filename=path)}}" width='300' height='300' />
+<h2>Result : {{result}} </h2>
+<h4 align="bottom"> This is a simple Digit recognizer based on machine learning. Upload any image containing a digit and then It will recgnize digit and gives you result.</h4>
+</body>
+</html>
